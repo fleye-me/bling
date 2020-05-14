@@ -1,0 +1,28 @@
+{
+  "name": "bling-nf",
+  "version": "1.0.0",
+  "description": "A lib to help with Bling NF integration",
+  "main": "index.js",
+  "author": "Daniel R. Beckert <drbeckert@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "nodemon",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "date-fns": "^2.13.0"
+  }
+}
