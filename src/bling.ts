@@ -3,12 +3,16 @@ import { api } from './api';
 import { NotaFiscal, ListarNotasFiscaisFilters } from './types';
 
 export class BlingClient {
-  private ENDPOINT = '/notasfiscais/json';
   constructor(private apiKey: string) {}
 
+  /**
+   * Recupera todas os notas fiscais cadastradas no sistema.
+   * @param filters os filtros que poderão se aplicados na busca
+   */
   async listarNotasFiscais(
     filters?: ListarNotasFiscaisFilters
   ): Promise<NotaFiscal[]> {
+    const ENDPOINT = '/notasfiscais';
     try {
       const params: any = { apikey: this.apiKey };
 
@@ -35,7 +39,28 @@ export class BlingClient {
         params['filters'] = fArray.join(';');
       }
 
-      const response = await api.get(this.ENDPOINT, { params });
+      const response = await api.get(`${ENDPOINT}/json`, { params });
+      return response.data.retorno.notasfiscais;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  /**
+   * Busca uma nota fiscal a partir de seu numero e sua serie.
+   * @param number o número da nota fiscal
+   * @param series a serie da nota fiscal
+   */
+  async buscarNotaFiscal(
+    number: number,
+    series: number
+  ): Promise<NotaFiscal[]> {
+    const ENDPOINT = '/notafiscal';
+    try {
+      const params: any = { apikey: this.apiKey };
+      const response = await api.get(`${ENDPOINT}/${number}/${series}/json`, {
+        params,
+      });
       return response.data.retorno.notasfiscais;
     } catch (err) {
       throw err;
