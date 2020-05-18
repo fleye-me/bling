@@ -1,8 +1,9 @@
 {
-  "name": "bling-nf",
+  "name": "bling-client",
   "version": "1.0.0",
   "description": "A lib to help with Bling NF integration",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Daniel R. Beckert <drbeckert@gmail.com>",
   "license": "MIT",
   "private": false,
