@@ -1,6 +1,6 @@
 {
-  "name": "bling-client",
-  "version": "0.0.1",
+  "name": "@sthima/bling",
+  "version": "0.0.0",
   "description": "A lib to help with Bling NF integration",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,11 +9,12 @@
   "private": false,
   "scripts": {
     "start": "nodemon",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sthima/bling-client.git"
+    "url": "git+https://github.com/sthima/bling.git"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.33.0",
