@@ -2,12 +2,12 @@ export enum SituacaoNF {
   Pendente = 1,
   Emitida,
   Cancelada,
-  Enviada_Aguardando_Recibo,
+  EnviadaAguardandoRecibo,
   Rejeitada,
   Autorizada,
-  Emitida_DANFE,
+  EmitidaDANFE,
   Registrada,
-  Enviada_Aguardando_Protocolo,
+  EnviadaAguardandoProtocolo,
   Denegada,
 }
 
@@ -23,7 +23,7 @@ export interface ListarNotasFiscaisFilters {
 /**
  * Interface do campo cliente dentro da NF
  */
-interface ICliente {
+interface Cliente {
   nome: string;
   cnpj: string;
   ie: string;
@@ -39,14 +39,14 @@ interface ICliente {
   fone: string;
 }
 
-interface ICodigosRastreamento {
+interface CodigosRastreamento {
   codigoRastreamento: string;
 }
 
 /**
  * Interface de um endereço de entrega
  */
-interface IEnderecoEntrega {
+interface EnderecoEntrega {
   nome: string;
   endereco: string;
   numero: string;
@@ -60,17 +60,17 @@ interface IEnderecoEntrega {
 /**
  * Interface do campo transporte
  */
-interface ITransporte {
+interface Transporte {
   transportadora: string;
   cnpj: string;
   tipo_frete: string;
-  enderecoEntrega: IEnderecoEntrega;
+  enderecoEntrega: EnderecoEntrega;
 }
 
 /**
  * Interface de um volume
  */
-interface IVolume {
+interface Volume {
   volume: {
     idServico: string;
     servico: string;
@@ -106,7 +106,7 @@ export interface NotaFiscal {
   numeroPedidoLoja: string;
   tipo: string;
   situacao: string;
-  cliente: ICliente;
+  cliente: Cliente;
   contato: string;
   cnpj: string;
   vendedor: string;
@@ -115,10 +115,10 @@ export interface NotaFiscal {
   chaveAcesso: string;
   xml: string;
   linkDanfe: string;
-  codigosRastreamento: ICodigosRastreamento;
+  codigosRastreamento: CodigosRastreamento;
   cfops: string[];
   tipoIntegracao: string;
-  transporte: ITransporte;
-  volumes: IVolume[];
+  transporte: Transporte;
+  volumes: Volume[];
   servico_correios: string;
 }

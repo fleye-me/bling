@@ -14,7 +14,7 @@ export class BlingClient {
   ): Promise<NotaFiscal[]> {
     const ENDPOINT = '/notasfiscais';
     try {
-      const params: any = { apikey: this.apiKey };
+      const params = { apikey: this.apiKey };
 
       // Build filters string
       if (filters) {
@@ -57,7 +57,7 @@ export class BlingClient {
   ): Promise<NotaFiscal[]> {
     const ENDPOINT = '/notafiscal';
     try {
-      const params: any = { apikey: this.apiKey };
+      const params = { apikey: this.apiKey };
       const response = await api.get(`${ENDPOINT}/${number}/${series}/json`, {
         params,
       });
