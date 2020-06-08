@@ -11,7 +11,7 @@ export class BlingClient {
    */
   async listarNotasFiscais(
     filters?: ListarNotasFiscaisFilters
-  ): Promise<NotaFiscal[]> {
+  ): Promise<{ notafiscal: NotaFiscal }[]> {
     const ENDPOINT = '/notasfiscais';
     try {
       const params: { [key: string]: string } = { apikey: this.apiKey };
