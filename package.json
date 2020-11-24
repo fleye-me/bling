@@ -37,8 +37,11 @@
     "typescript": "^3.9.2"
   },
   "dependencies": {
+    "ajv": "^6.12.6",
     "axios": "^0.19.2",
-    "date-fns": "^2.13.0"
+    "date-fns": "^2.13.0",
+    "typescript-json-validator": "^2.4.2",
+    "xml-js": "^1.6.11"
   },
   "keywords": [
     "sthima",

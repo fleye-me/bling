@@ -23,7 +23,7 @@ export interface ListarNotasFiscaisFilters {
 /**
  * Interface do campo cliente dentro da NF
  */
-interface Cliente {
+export interface Cliente {
   nome: string;
   cnpj: string;
   ie: string;
@@ -60,7 +60,7 @@ interface EnderecoEntrega {
 /**
  * Interface do campo transporte
  */
-interface Transporte {
+export interface Transporte {
   transportadora: string;
   cnpj: string;
   tipo_frete: string;
@@ -70,7 +70,7 @@ interface Transporte {
 /**
  * Interface de um volume
  */
-interface Volume {
+export interface Volume {
   volume: {
     idServico: string;
     servico: string;
