@@ -5,14 +5,14 @@ import validate from './validators/pedido.validator';
 import { NotaFiscal, ListarNotasFiscaisFilters } from './types/receiveInvoice';
 import { Pedido } from './types/createInvoice';
 
-const NF_ENDPOINT = '/notafiscal';
 export class BlingClient {
   constructor(private apiKey: string) {}
 
   async criarNotaFiscal(pedido: Pedido): Promise<NotaFiscal> {
+    const ENDPOINT = '/notafiscal';
     try {
       if (!validate(pedido)) {
-        throw new Error('Error');
+        throw new Error();
       }
 
       const params: { [key: string]: string } = {
@@ -20,7 +20,7 @@ export class BlingClient {
         xml: js2xml(pedido, { compact: true, spaces: 4 }),
       };
 
-      const response = await api.post(`${NF_ENDPOINT}/json`, {}, { params });
+      const response = await api.post(`${ENDPOINT}/json`, {}, { params });
       return response.data.retorno.notasfiscais.shift();
     } catch (err) {
       throw err;

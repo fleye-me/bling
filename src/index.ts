@@ -1,5 +1,5 @@
 export { BlingClient } from './bling';
-export { SituacaoNF } from './types/receiveInvoice';
+export { SituacaoNF, NotaFiscal } from './types/receiveInvoice';
 export {
   TipoPessoa,
   TipoContribuinte,
@@ -9,4 +9,5 @@ export {
   ModeloDoc,
   TipoPedido,
   FinalidePedido,
+  Pedido,
 } from './types/createInvoice';

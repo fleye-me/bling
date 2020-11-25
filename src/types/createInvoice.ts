@@ -93,7 +93,7 @@ interface EnderecoCliente {
 /**
  * Interface do campo Cliente
  */
-export interface Cliente extends EnderecoCliente {
+interface Cliente extends EnderecoCliente {
   nome: string;
   tipo_pessoa: TipoPessoa;
   cpf_cnpj: string;
@@ -130,7 +130,7 @@ interface Volume {
 /**
  * Interface do campo Transporte
  */
-export interface Transporte {
+interface Transporte {
   transportadora?: string;
   cpf_cnpj?: string;
   ie_rg?: string;
@@ -154,7 +154,7 @@ export interface Transporte {
 /**
  * Interface do campo Item
  */
-export interface Item {
+interface Item {
   descricao: string;
   un: UnidadeItem;
   qtde: string;
@@ -174,7 +174,7 @@ export interface Item {
 /**
  * Interface do campo Documento Referenciado
  */
-export interface DocReferenciado {
+interface DocReferenciado {
   modelo: ModeloDoc;
   data?: string;
   numero?: string;
@@ -186,7 +186,7 @@ export interface DocReferenciado {
 /**
  * Interface do campo Parcela
  */
-export interface Parcela {
+interface Parcela {
   parcela: {
     dias?: string;
     data?: string;
