@@ -8,7 +8,7 @@ import { Pedido } from './types/createInvoice';
 export class BlingClient {
   constructor(private apiKey: string) {}
 
-  async criarNotaFiscal(pedido: Pedido): Promise<NotaFiscal> {
+  async criarNotaFiscal(pedido: Pedido): Promise<{ notaFiscal: NotaFiscal }> {
     const ENDPOINT = '/notafiscal';
     try {
       if (!validate(pedido)) {
@@ -33,7 +33,7 @@ export class BlingClient {
    */
   async listarNotasFiscais(
     filters?: ListarNotasFiscaisFilters
-  ): Promise<{ notafiscal: NotaFiscal }[]> {
+  ): Promise<{ notaFiscal: NotaFiscal }[]> {
     const ENDPOINT = '/notasfiscais';
     try {
       const params: { [key: string]: string } = { apikey: this.apiKey };
@@ -76,7 +76,7 @@ export class BlingClient {
   async buscarNotaFiscal(
     number: number,
     series: number
-  ): Promise<NotaFiscal[]> {
+  ): Promise<{ notaFiscal: NotaFiscal }[]> {
     const ENDPOINT = '/notafiscal';
     try {
       const params: { [key: string]: string } = { apikey: this.apiKey };
