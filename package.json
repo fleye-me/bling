@@ -1,6 +1,6 @@
 {
   "name": "@sthima/bling",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A lib to help with Bling NF integration",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
