@@ -1,9 +1,31 @@
 import { format } from 'date-fns';
-import { api } from './api';
-import { NotaFiscal, ListarNotasFiscaisFilters } from './types';
+import { js2xml } from 'xml-js';
+import { api } from './utils/api';
+import validate from './validators/pedido.validator';
+import { NotaFiscal, ListarNotasFiscaisFilters } from './types/receiveInvoice';
+import { Pedido } from './types/createInvoice';
 
 export class BlingClient {
   constructor(private apiKey: string) {}
+
+  async criarNotaFiscal(pedido: Pedido): Promise<NotaFiscal> {
+    const ENDPOINT = '/notafiscal';
+    try {
+      if (!validate(pedido)) {
+        throw new Error();
+      }
+
+      const params: { [key: string]: string } = {
+        apikey: this.apiKey,
+        xml: js2xml(pedido, { compact: true, spaces: 4 }),
+      };
+
+      const response = await api.post(`${ENDPOINT}/json`, {}, { params });
+      return response.data.retorno.notasfiscais.shift();
+    } catch (err) {
+      throw err;
+    }
+  }
 
   /**
    * Recupera todas os notas fiscais cadastradas no sistema.
