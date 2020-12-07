@@ -22,7 +22,7 @@ export const PedidoSchema = {
   definitions: {
     Cliente: {
       defaultProperties: [],
-      description: 'Interface do campo cliente dentro da NF',
+      description: 'Interface do campo Cliente',
       properties: {
         bairro: {
           type: 'string',
@@ -37,7 +37,9 @@ export const PedidoSchema = {
           type: 'string',
         },
         contribuinte: {
-          $ref: '#/definitions/TipoContribuinte',
+          description: 'Enum tipo de contribuinte para Cliente',
+          enum: [1, 2, 9],
+          type: 'number',
         },
         cpf_cnpj: {
           type: 'string',
@@ -74,7 +76,6 @@ export const PedidoSchema = {
         'bairro',
         'cep',
         'cidade',
-        'contribuinte',
         'cpf_cnpj',
         'email',
         'endereco',
@@ -87,7 +88,7 @@ export const PedidoSchema = {
     },
     DocReferenciado: {
       defaultProperties: [],
-      description: 'Interface do documento Ref',
+      description: 'Interface do campo Documento Referenciado',
       properties: {
         chave_acesso: {
           type: 'string',
@@ -141,7 +142,7 @@ export const PedidoSchema = {
     },
     Item: {
       defaultProperties: [],
-      description: 'Interface do campo item',
+      description: 'Interface do campo Item',
       properties: {
         cest: {
           type: 'string',
@@ -165,7 +166,7 @@ export const PedidoSchema = {
           type: 'string',
         },
         origem: {
-          type: 'string',
+          $ref: '#/definitions/OrigemItem',
         },
         peso_bruto: {
           type: 'string',
@@ -177,24 +178,16 @@ export const PedidoSchema = {
           type: 'string',
         },
         tipo: {
-          type: 'string',
+          $ref: '#/definitions/TipoItem',
         },
         un: {
-          type: 'string',
+          $ref: '#/definitions/UnidadeItem',
         },
         vlr_unit: {
           type: 'string',
         },
       },
-      required: [
-        'descricao',
-        'informacoes_adicionais',
-        'origem',
-        'qtde',
-        'tipo',
-        'un',
-        'vlr_unit',
-      ],
+      required: ['descricao', 'origem', 'qtde', 'tipo', 'un', 'vlr_unit'],
       type: 'object',
     },
     ModeloDoc: {
@@ -204,7 +197,7 @@ export const PedidoSchema = {
     NotaFiscalRuralReferenciada: {
       defaultProperties: [],
       description:
-        'Interface da Nota Fiscal Do Produtor Rural Referenciada para o Pedido',
+        'Interface do campo Nota Fiscal Do Produtor Rural Referenciada',
       properties: {
         ano_mes_emissao: {
           type: 'string',
@@ -218,9 +211,14 @@ export const PedidoSchema = {
       },
       type: 'object',
     },
+    OrigemItem: {
+      description: 'Enum origem do Item',
+      enum: [0, 1, 2, 3, 4, 5, 6, 7],
+      type: 'number',
+    },
     Parcela: {
       defaultProperties: [],
-      description: 'Interface da Parcela',
+      description: 'Interface do campo Parcela',
       properties: {
         parcela: {
           defaultProperties: [],
@@ -247,19 +245,19 @@ export const PedidoSchema = {
       required: ['parcela'],
       type: 'object',
     },
-    TipoContribuinte: {
-      description: 'Enum tipo de contribuinte para cliente',
-      enum: [1, 2, 9],
-      type: 'number',
+    TipoItem: {
+      description: 'Enum tipo do Item',
+      enum: ['P', 'S'],
+      type: 'string',
     },
     TipoPessoa: {
-      description: 'Enum tipo de pessoa para cliente',
+      description: 'Enum tipo de pessoa para Cliente',
       enum: ['E', 'F', 'J'],
       type: 'string',
     },
     Transporte: {
       defaultProperties: [],
-      description: 'Interface do campo transporte',
+      description: 'Interface do campo Transporte',
       properties: {
         cidade: {
           type: 'string',
@@ -269,6 +267,7 @@ export const PedidoSchema = {
         },
         dados_etiqueta: {
           $ref: '#/definitions/Etiqueta',
+          description: 'Interface do campo Etiqueta',
         },
         endereco: {
           type: 'string',
@@ -319,12 +318,16 @@ export const PedidoSchema = {
           type: 'array',
         },
       },
-      required: ['cpf_cnpj', 'dados_etiqueta', 'transportadora'],
       type: 'object',
+    },
+    UnidadeItem: {
+      description: 'Enum unidade do Item',
+      enum: ['cx', 'pc', 'un'],
+      type: 'string',
     },
     Volume: {
       defaultProperties: [],
-      description: 'Interface de um volume',
+      description: 'Interface do campo Volume',
       properties: {
         volume: {
           defaultProperties: [],
@@ -344,7 +347,7 @@ export const PedidoSchema = {
       type: 'object',
     },
   },
-  description: 'Interface do pedido',
+  description: 'Interface do campo Pedido',
   properties: {
     cliente: {
       $ref: '#/definitions/Cliente',
@@ -354,14 +357,14 @@ export const PedidoSchema = {
     },
     doc_referenciado: {
       $ref: '#/definitions/DocReferenciado',
-      description: 'Interface do documento Ref',
+      description: 'Interface do campo Documento Referenciado',
     },
     finalidade: {
       description: 'Enum de modelo para DocReferenciado',
       enum: [1, 2, 3, 4],
       type: 'number',
     },
-    items: {
+    itens: {
       items: {
         $ref: '#/definitions/Item',
       },
@@ -376,7 +379,7 @@ export const PedidoSchema = {
     nf_produtor_rural_referenciada: {
       $ref: '#/definitions/NotaFiscalRuralReferenciada',
       description:
-        'Interface da Nota Fiscal Do Produtor Rural Referenciada para o Pedido',
+        'Interface do campo Nota Fiscal Do Produtor Rural Referenciada',
     },
     numero_loja: {
       type: 'string',
@@ -400,6 +403,7 @@ export const PedidoSchema = {
     },
     transporte: {
       $ref: '#/definitions/Transporte',
+      description: 'Interface do campo Transporte',
     },
     vlr_desconto: {
       type: 'string',
@@ -414,7 +418,7 @@ export const PedidoSchema = {
       type: 'string',
     },
   },
-  required: ['cliente', 'items', 'transporte'],
+  required: ['cliente', 'itens'],
   type: 'object',
 };
 export type ValidateFunction<T> = ((data: unknown) => data is T) &
