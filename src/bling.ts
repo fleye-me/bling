@@ -80,7 +80,7 @@ export class BlingClient {
   async buscarNotaFiscal(
     number: string,
     series: string
-  ): Promise<{ notaFiscal: NotaFiscal }[]> {
+  ): Promise<{ notaFiscal: NotaFiscal }> {
     const ENDPOINT = '/notafiscal';
     try {
       const params: { [key: string]: string } = { apikey: this.apiKey };
