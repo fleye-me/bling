@@ -228,5 +228,5 @@ export interface Pedido {
     vlr_despesas?: string;
     vlr_desconto?: string;
     obs?: string;
-  }
+  };
 }
