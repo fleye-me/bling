@@ -19,8 +19,12 @@ export class BlingClient {
         apikey: this.apiKey,
         xml: js2xml(pedido, { compact: true, spaces: 4 }),
       };
-
       const response = await api.post(`${ENDPOINT}/json`, {}, { params });
+
+      if (!response.data.retorno.notasfiscais) {
+        throw new Error(response.data.retorno.erros);
+      }
+
       return response.data.retorno.notasfiscais.shift();
     } catch (err) {
       throw err;
@@ -74,16 +78,21 @@ export class BlingClient {
    * @param series a serie da nota fiscal
    */
   async buscarNotaFiscal(
-    number: number,
-    series: number
-  ): Promise<{ notaFiscal: NotaFiscal }[]> {
+    number: string,
+    series: string
+  ): Promise<{ notaFiscal: NotaFiscal }> {
     const ENDPOINT = '/notafiscal';
     try {
       const params: { [key: string]: string } = { apikey: this.apiKey };
       const response = await api.get(`${ENDPOINT}/${number}/${series}/json`, {
         params,
       });
-      return response.data.retorno.notasfiscais;
+
+      if (!response.data.retorno.notasfiscais) {
+        throw new Error(response.data.retorno.erros);
+      }
+
+      return response.data.retorno.notasfiscais.shift();
     } catch (err) {
       throw err;
     }

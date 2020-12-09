@@ -209,22 +209,24 @@ interface NotaFiscalRuralReferenciada {
  * Interface do campo Pedido
  */
 export interface Pedido {
-  cliente: Cliente;
-  itens: Item[];
-  transporte?: Transporte;
-  parcelas?: Parcela[];
-  tipo?: TipoPedido;
-  finalidade?: FinalidePedido;
-  loja?: string;
-  numero_loja?: string;
-  numero_nf?: string;
-  nat_operacao?: string;
-  data_operacao?: string;
-  doc_referenciado?: DocReferenciado;
-  nf_produtor_rural_referenciada?: NotaFiscalRuralReferenciada;
-  vlr_frete?: string;
-  vlr_seguro?: string;
-  vlr_despesas?: string;
-  vlr_desconto?: string;
-  obs?: string;
+  pedido: {
+    cliente: Cliente;
+    itens: Item[];
+    transporte?: Transporte;
+    parcelas?: Parcela[];
+    tipo?: TipoPedido;
+    finalidade?: FinalidePedido;
+    loja?: string;
+    numero_loja?: string;
+    numero_nf?: string;
+    nat_operacao?: string;
+    data_operacao?: string;
+    doc_referenciado?: DocReferenciado;
+    nf_produtor_rural_referenciada?: NotaFiscalRuralReferenciada;
+    vlr_frete?: string;
+    vlr_seguro?: string;
+    vlr_despesas?: string;
+    vlr_desconto?: string;
+    obs?: string;
+  }
 }
