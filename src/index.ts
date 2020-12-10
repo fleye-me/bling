@@ -1,6 +1,7 @@
 export { BlingClient } from './bling';
-export { SituacaoNF, NotaFiscal } from './types/receiveInvoice';
 export {
+  SituacaoNF,
+  NotaFiscal,
   TipoPessoa,
   TipoContribuinte,
   UnidadeItem,
@@ -10,4 +11,4 @@ export {
   TipoPedido,
   FinalidePedido,
   Pedido,
-} from './types/createInvoice';
+} from './types';
