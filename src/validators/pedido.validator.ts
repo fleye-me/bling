@@ -349,76 +349,83 @@ export const PedidoSchema = {
   },
   description: 'Interface do campo Pedido',
   properties: {
-    cliente: {
-      $ref: '#/definitions/Cliente',
-    },
-    data_operacao: {
-      type: 'string',
-    },
-    doc_referenciado: {
-      $ref: '#/definitions/DocReferenciado',
-      description: 'Interface do campo Documento Referenciado',
-    },
-    finalidade: {
-      description: 'Enum de modelo para DocReferenciado',
-      enum: [1, 2, 3, 4],
-      type: 'number',
-    },
-    itens: {
-      items: {
-        $ref: '#/definitions/Item',
+    pedido: {
+      defaultProperties: [],
+      properties: {
+        cliente: {
+          $ref: '#/definitions/Cliente',
+        },
+        data_operacao: {
+          type: 'string',
+        },
+        doc_referenciado: {
+          $ref: '#/definitions/DocReferenciado',
+          description: 'Interface do campo Documento Referenciado',
+        },
+        finalidade: {
+          description: 'Enum de modelo para DocReferenciado',
+          enum: [1, 2, 3, 4],
+          type: 'number',
+        },
+        itens: {
+          items: {
+            $ref: '#/definitions/Item',
+          },
+          type: 'array',
+        },
+        loja: {
+          type: 'string',
+        },
+        nat_operacao: {
+          type: 'string',
+        },
+        nf_produtor_rural_referenciada: {
+          $ref: '#/definitions/NotaFiscalRuralReferenciada',
+          description:
+            'Interface do campo Nota Fiscal Do Produtor Rural Referenciada',
+        },
+        numero_loja: {
+          type: 'string',
+        },
+        numero_nf: {
+          type: 'string',
+        },
+        obs: {
+          type: 'string',
+        },
+        parcelas: {
+          items: {
+            $ref: '#/definitions/Parcela',
+          },
+          type: 'array',
+        },
+        tipo: {
+          description: 'Enum de tipo para Pedido',
+          enum: ['E', 'S'],
+          type: 'string',
+        },
+        transporte: {
+          $ref: '#/definitions/Transporte',
+          description: 'Interface do campo Transporte',
+        },
+        vlr_desconto: {
+          type: 'string',
+        },
+        vlr_despesas: {
+          type: 'string',
+        },
+        vlr_frete: {
+          type: 'string',
+        },
+        vlr_seguro: {
+          type: 'string',
+        },
       },
-      type: 'array',
-    },
-    loja: {
-      type: 'string',
-    },
-    nat_operacao: {
-      type: 'string',
-    },
-    nf_produtor_rural_referenciada: {
-      $ref: '#/definitions/NotaFiscalRuralReferenciada',
-      description:
-        'Interface do campo Nota Fiscal Do Produtor Rural Referenciada',
-    },
-    numero_loja: {
-      type: 'string',
-    },
-    numero_nf: {
-      type: 'string',
-    },
-    obs: {
-      type: 'string',
-    },
-    parcelas: {
-      items: {
-        $ref: '#/definitions/Parcela',
-      },
-      type: 'array',
-    },
-    tipo: {
-      description: 'Enum de tipo para Pedido',
-      enum: ['E', 'S'],
-      type: 'string',
-    },
-    transporte: {
-      $ref: '#/definitions/Transporte',
-      description: 'Interface do campo Transporte',
-    },
-    vlr_desconto: {
-      type: 'string',
-    },
-    vlr_despesas: {
-      type: 'string',
-    },
-    vlr_frete: {
-      type: 'string',
-    },
-    vlr_seguro: {
-      type: 'string',
+      required: ['cliente', 'itens'],
+      type: 'object',
     },
   },
-  required: ['cliente', 'itens'],
+  required: ['pedido'],
   type: 'object',
 };
 export type ValidateFunction<T> = ((data: unknown) => data is T) &
