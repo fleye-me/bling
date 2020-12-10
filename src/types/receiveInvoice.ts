@@ -65,6 +65,7 @@ interface Transporte {
   cnpj: string;
   tipo_frete: string;
   enderecoEntrega: EnderecoEntrega;
+  volumes: Volume[];
 }
 
 /**
@@ -119,6 +120,5 @@ export interface NotaFiscal {
   cfops: string[];
   tipoIntegracao: string;
   transporte: Transporte;
-  volumes: Volume[];
   servico_correios: string;
 }
