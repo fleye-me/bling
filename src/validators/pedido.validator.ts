@@ -144,50 +144,57 @@ export const PedidoSchema = {
       defaultProperties: [],
       description: 'Interface do campo Item',
       properties: {
-        cest: {
-          type: 'string',
-        },
-        class_fiscal: {
-          type: 'string',
-        },
-        cod_servico: {
-          type: 'string',
-        },
-        codigo: {
-          type: 'string',
-        },
-        descricao: {
-          type: 'string',
-        },
-        informacoes_adicionais: {
-          type: 'string',
-        },
-        numero_pedido_compra: {
-          type: 'string',
-        },
-        origem: {
-          $ref: '#/definitions/OrigemItem',
-        },
-        peso_bruto: {
-          type: 'string',
-        },
-        peso_liq: {
-          type: 'string',
-        },
-        qtde: {
-          type: 'string',
-        },
-        tipo: {
-          $ref: '#/definitions/TipoItem',
-        },
-        un: {
-          $ref: '#/definitions/UnidadeItem',
-        },
-        vlr_unit: {
-          type: 'string',
+        item: {
+          defaultProperties: [],
+          properties: {
+            cest: {
+              type: 'string',
+            },
+            class_fiscal: {
+              type: 'string',
+            },
+            cod_servico: {
+              type: 'string',
+            },
+            codigo: {
+              type: 'string',
+            },
+            descricao: {
+              type: 'string',
+            },
+            informacoes_adicionais: {
+              type: 'string',
+            },
+            numero_pedido_compra: {
+              type: 'string',
+            },
+            origem: {
+              $ref: '#/definitions/OrigemItem',
+            },
+            peso_bruto: {
+              type: 'string',
+            },
+            peso_liq: {
+              type: 'string',
+            },
+            qtde: {
+              type: 'string',
+            },
+            tipo: {
+              $ref: '#/definitions/TipoItem',
+            },
+            un: {
+              $ref: '#/definitions/UnidadeItem',
+            },
+            vlr_unit: {
+              type: 'string',
+            },
+          },
+          required: ['descricao', 'origem', 'qtde', 'tipo', 'un', 'vlr_unit'],
+          type: 'object',
         },
       },
-      required: ['descricao', 'origem', 'qtde', 'tipo', 'un', 'vlr_unit'],
+      required: ['item'],
       type: 'object',
     },
     ModeloDoc: {

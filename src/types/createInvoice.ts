@@ -155,20 +155,22 @@ interface Transporte {
  * Interface do campo Item
  */
 interface Item {
-  descricao: string;
-  un: UnidadeItem;
-  qtde: string;
-  vlr_unit: string;
-  tipo: TipoItem;
-  origem: OrigemItem;
-  codigo?: string;
-  peso_bruto?: string;
-  numero_pedido_compra?: string;
-  peso_liq?: string;
-  class_fiscal?: string;
-  cest?: string;
-  cod_servico?: string;
-  informacoes_adicionais?: string;
+  item: {
+    descricao: string;
+    un: UnidadeItem;
+    qtde: string;
+    vlr_unit: string;
+    tipo: TipoItem;
+    origem: OrigemItem;
+    codigo?: string;
+    peso_bruto?: string;
+    numero_pedido_compra?: string;
+    peso_liq?: string;
+    class_fiscal?: string;
+    cest?: string;
+    cod_servico?: string;
+    informacoes_adicionais?: string;
+  };
 }
 
 /**
